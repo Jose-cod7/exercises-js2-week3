@@ -60,8 +60,36 @@ var movies = [
 
 // create showMovies function
 
+function showMovies(movies){
+  const totalMovies = document.querySelector('#movies-number');
+  totalMovies.innerText = movies.length;
+  const addPa = document.querySelector('div #all-movies')
+  movies.forEach(function(movie){
+    const movieListP = document.createElement('p');
+    addPa.appendChild(movieListP);
+    movieListP.innerText = movie.title + ' - ' + movie.director;
+  })
+}
 
-// create a new movie object for your favorite movie
 
 
-// create addMovies function
+var myMovie = {
+  title: "The Great Escape",
+  director: "Bob",
+  type: "war",
+  haveWatched: true
+};
+function addMovie(movie) {
+  movies.push(movie)
+}
+setTimeout(function() {
+  addMovie(myMovie)
+}, 2000);
+setTimeout(function() {
+  showMovies(movies)
+}, 1000);
+
+function showAddMovie () {
+  addMovie();
+}
+setTimeout(showAddMovie, 2000)
