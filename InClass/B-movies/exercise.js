@@ -60,16 +60,30 @@ var movies = [
 
 // create showMovies function
 
-function showMovies(movies){
-  const totalMovies = document.querySelector('#movies-number');
+function showMovies(movies) {
+  var totalMovies = document.querySelector("#movies-number");
   totalMovies.innerText = movies.length;
-  const addPa = document.querySelector('div #all-movies')
-  movies.forEach(function(movie){
-    const movieListP = document.createElement('p');
-    addPa.appendChild(movieListP);
-    movieListP.innerText = movie.title + ' - ' + movie.director;
+  movies.forEach(movie => {
+    var paragraph = document.createElement("p");
+    var movieList = document.querySelector("#all-movies")
+    movieList.appendChild(paragraph);
+    paragraph.innerText = movie.title + " - " + movie.director;
   })
 }
+var myMovie = {
+  title: "The Great Escape",
+  director: "Bob",
+  type: "war",
+  haveWatched: true
+};
+function addMovie(movie, callback) {
+  setTimeout(() => {
+    movies.push(movie)
+    setTimeout(() => callback(movies), 1000)
+  }, 2000);
+}
+
+addMovie(myMovie, showMovies)
 
 
 
@@ -79,17 +93,3 @@ var myMovie = {
   type: "war",
   haveWatched: true
 };
-function addMovie(movie) {
-  movies.push(movie)
-}
-setTimeout(function() {
-  addMovie(myMovie)
-}, 2000);
-setTimeout(function() {
-  showMovies(movies)
-}, 1000);
-
-function showAddMovie () {
-  addMovie();
-}
-setTimeout(showAddMovie, 2000)
