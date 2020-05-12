@@ -1,12 +1,14 @@
 <!doctype html>
 
 <body>
-<form action="fetch-exercise">
-  <label for="lat">Latitude:</label><br>
-  <input type="text" id="lat" name="lat" value=""><br>
-  <label for="long">Longitude:</label><br>
-  <input type="text" id="long" name="long" value=""><br><br>
-  <input type="submit" value="GET">
-</form> 
-    <script src = "exercise.js"></script>
+    <form id="get-weather" onsubmit="return false">
+        <label for="lat">Latitude:</label><br>
+        <input type="text" id="lat" name="lat"><br>
+
+        <label for="long">Longitude:</label><br>
+        <input type="text" id="long" name="long"><br><br>
+        <button id="getweather">GET</button>
+    </form>
+    <h3 id="result"></h3>
+    <script src="exercise.js"></script>
 </body>

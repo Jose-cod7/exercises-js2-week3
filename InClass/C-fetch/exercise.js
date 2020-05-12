@@ -10,3 +10,28 @@ When you get the response from the server, print the current temperature in an <
 
 ================
 */
+
+const h3 = document.querySelector("#result");
+const input1 = document.querySelector("#lat");
+const lat = input1.value;
+const input2 = document.querySelector("#long");
+const long = input2.value;
+
+function getWeather() {
+    fetch(
+            "https://fcc-weather-api.glitch.me/api/current?lat=" + lat + "&lon=" + long
+        )
+        .then(function(result) {
+            return result.json();
+        })
+        .then(function(result) {
+            console.log(result); //console.log para verificar información
+            //console.log(result.main.temp);
+            let temp = result.main.temp;
+            console.log("This is the result in the promise", temp);
+            h3.innerText = temp;
+        });
+}
+
+const button = document.querySelector("#getweather");
+button.addEventListener("click", getWeather);
